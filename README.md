@@ -45,7 +45,7 @@
 
 ## 📋 Overview
 
-**PELDR** is a military‑grade PE packer and reflective loader that transforms standard Windows executables (EXE/DLL) into self‑contained, encrypted, fileless‑executing binaries.  
+**PELDR** — is a military‑grade PE packer and reflective loader that transforms standard Windows executables (EXE/DLL) into self‑contained, encrypted, fileless‑executing binaries.  
 It combines a custom RLE compression, a stream XOR cipher, and a fully reflective loader stub that resolves APIs by hash, evades debugging, and never writes the original image to disk.
 
 ### What makes it unique?
