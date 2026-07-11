@@ -144,7 +144,7 @@ cd peldr
 The builder is a single C++ file with the loader stub already embedded.
 
 ```bash
-g++ -o peldr.exe peldr.c                                                        ^
+gcc -o peldr.exe peldr.c                                                        ^
     -m64 -static                                                                ^
     -Wl,--sort-common,--nxcompat,--dynamicbase,--no-seh,-x                      ^
     -s -g0 -O3 -Wl,-O2                                                          ^
@@ -292,7 +292,7 @@ original.exe  →  peldr-original.exe
 git clone https://github.com/vk-candpython/peldr.git
 cd peldr
 # Сборка упаковщика (stub уже встроен)
-g++ -m64 -static ... -o peldr.exe peldr.c
+gcc -m64 -static ... -o peldr.exe peldr.c
 # Упаковка файла
 peldr.exe myapp.exe
 ./peldr-myapp.exe
