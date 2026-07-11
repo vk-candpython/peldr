@@ -149,6 +149,7 @@ gcc -o peldr.exe peldr.c                                                        
     -Wl,--sort-common,--nxcompat,--dynamicbase,--no-seh,-x                      ^
     -s -g0 -O3 -Wl,-O2                                                          ^
     -fipa-pta -fno-strict-aliasing -fvisibility=hidden -fomit-frame-pointer     ^
+    -fno-reorder-blocks-and-partition                                           ^
     -fmerge-all-constants -ffunction-sections -fdata-sections -Wl,--gc-sections ^
     -Wl,--build-id=none -fno-ident -fno-builtin -fno-common                     ^
     -fno-stack-check -fno-stack-protector -fno-stack-clash-protection           ^
@@ -168,9 +169,10 @@ gcc -o loader.exe loader.c -e Main                                              
     -fipa-pta -fno-strict-aliasing -fvisibility=hidden -fomit-frame-pointer     ^
     -fno-reorder-blocks-and-partition                                           ^
     -fmerge-all-constants -ffunction-sections -fdata-sections -Wl,--gc-sections ^
-    -Wl,--build-id=none -fno-ident -fno-builtin -fno-common -fno-stack-check    ^
-    -fno-stack-protector -fno-stack-clash-protection -fno-exceptions            ^
-    -fno-unwind-tables -fno-asynchronous-unwind-tables
+    -Wl,--build-id=none -fno-ident -fno-builtin -fno-common                     ^
+    -fno-stack-check -fno-stack-protector -fno-stack-clash-protection           ^
+    -fno-exceptions -fno-unwind-tables -fno-asynchronous-unwind-tables
+```
 ```
 
 Convert `loader.exe` to a C array (e.g., using `xxd -i loader.exe > stub.h`) and update `STUB_EXE[]` in `peldr.c`. Then rebuild the builder.
