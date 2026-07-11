@@ -148,25 +148,30 @@ cd peldr
 
 ```bash
 # Build loader (stub)
-gcc -m64 -nostdlib -nodefaultlibs -nostartfiles -static-pie -e Main -Os \
-    -Wl,-O2,--nxcompat,--dynamicbase,-x,--sort-common,--exclude-all-symbols,\
---no-insert-timestamp,--no-seh,--build-id=none,--strip-all,--discard-all,--gc-sections \
-    -s -fvisibility=hidden -fno-semantic-interposition -fomit-frame-pointer \
-    -ffreestanding -fmerge-constants -ffunction-sections -fdata-sections \
-    -fno-builtin -fno-common -fno-plt -fno-exceptions -fno-stack-check \
-    -fno-stack-protector -fno-stack-clash-protection -fno-ident \
-    -fno-unwind-tables -fno-asynchronous-unwind-tables -fno-math-errno \
-    -fno-trapping-math -o loader.exe loader.c
+gcc -o loader.exe loader.c -e Main                                                      ^
+    -m64 -mtune=generic -static -nostdlib -ffreestanding                                ^
+    -Wl,--sort-common,--nxcompat,--dynamicbase,--no-seh,-x                              ^
+    -s -g0 -O3 -Wl,-O2 -fipa-pta                                                        ^
+    -fno-strict-aliasing -fvisibility=hidden -fomit-frame-pointer                       ^
+    -fno-reorder-blocks-and-partition                                                   ^
+    -fmerge-all-constants -ffunction-sections         -fdata-sections -Wl,--gc-sections ^
+    -Wl,--build-id=none   -fno-ident -fno-builtin     -fno-common     -fno-stack-check  ^
+    -fno-stack-protector  -fno-stack-clash-protection -fno-exceptions                   ^
+    -fno-unwind-tables    -fno-asynchronous-unwind-tables
+
 
 
 # Build packer
-g++ -m64 -static-pie -mconsole -municode -O3 \
-    -Wl,-O2,--nxcompat,-x,--sort-common,--exclude-all-symbols,\
---no-insert-timestamp,--no-seh,--build-id=none,--strip-all,--discard-all,--gc-sections \
-    -s -fvisibility=hidden -fno-semantic-interposition -fomit-frame-pointer \
-    -fmerge-constants -ffunction-sections -fdata-sections -fno-common -fno-plt \
-    -fno-exceptions -fno-ident -fno-unwind-tables -fno-asynchronous-unwind-tables \
-    -fno-math-errno -fno-trapping-math -o peldr.exe peldr.cpp
+gcc -o peldr.exe peldr.c                                                                ^
+    -m64 -mtune=generic -static                                                         ^
+    -Wl,--sort-common,--nxcompat,--dynamicbase,--no-seh,-x                              ^
+    -s -g0 -O3 -Wl,-O2 -fipa-pta                                                        ^
+    -fno-strict-aliasing -fvisibility=hidden -fomit-frame-pointer                       ^
+    -fno-reorder-blocks-and-partition                                                   ^
+    -fmerge-all-constants -ffunction-sections         -fdata-sections -Wl,--gc-sections ^
+    -Wl,--build-id=none   -fno-ident -fno-builtin     -fno-common     -fno-stack-check  ^
+    -fno-stack-protector  -fno-stack-clash-protection -fno-exceptions                   ^
+    -fno-unwind-tables    -fno-asynchronous-unwind-tables
 ```
 
 ### 🏃 Usage
