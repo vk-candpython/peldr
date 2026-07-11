@@ -161,7 +161,7 @@ gcc -o peldr.exe peldr.c                                                        
 <summary><b>Rebuilding the stub</b></summary>
 
 ```bash
-gcc -o loader.exe loader.c                                                      ^
+gcc -o loader.exe loader.c -e Main                                              ^
     -m64 -nostdlib -nostartfiles -ffreestanding                                 ^
     -Wl,--sort-common,--nxcompat,--dynamicbase,--no-seh,-x                      ^
     -s -g0 -O3 -Wl,-O2                                                          ^
