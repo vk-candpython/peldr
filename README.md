@@ -147,12 +147,12 @@ The builder is a single C++ file with the loader stub already embedded.
 gcc -o peldr.exe peldr.c                                                        ^
     -m64 -static                                                                ^
     -Wl,--sort-common,--nxcompat,--dynamicbase,--no-seh,-x                      ^
-    -s -g0 -O3 -Wl,-O2                                                          ^
+    -s -g0 -O3 -Wl,-O3                                                          ^
     -fipa-pta -fstrict-aliasing -fvisibility=hidden -fomit-frame-pointer        ^
     -fmerge-all-constants -ffunction-sections -fdata-sections -Wl,--gc-sections ^
-    -Wl,--build-id=none -fno-ident -fno-builtin -fno-common                     ^
+    -Wl,--build-id=none -fno-ident -fno-common                                  ^
     -fno-stack-check -fno-stack-protector -fno-stack-clash-protection           ^
-    -fno-exceptions -fno-unwind-tables -fno-asynchronous-unwind-tables
+    -fno-exceptions
 ```
 
 > **Note:** The loader stub is pre‑compiled. If you modify `loader.c` / `loader.h`, you must regenerate the stub array (see [Rebuilding the stub](#rebuilding-the-stub)).
@@ -162,14 +162,15 @@ gcc -o peldr.exe peldr.c                                                        
 
 ```bash
 gcc -o loader.exe loader.c -e Main                                              ^
-    -m64 -nostdlib -nostartfiles -ffreestanding                                 ^
+    -m64 -nostdlib -ffreestanding                                               ^
     -Wl,--sort-common,--nxcompat,--dynamicbase,--no-seh,-x                      ^
     -s -g0 -O3 -Wl,-O2                                                          ^
+    -fno-semantic-interposition
     -fipa-pta -fstrict-aliasing -fvisibility=hidden -fomit-frame-pointer        ^
     -fmerge-all-constants -ffunction-sections -fdata-sections -Wl,--gc-sections ^
-    -Wl,--build-id=none -fno-ident -fno-builtin -fno-common                     ^
+    -Wl,--build-id=none -fno-ident -fno-common                                  ^
     -fno-stack-check -fno-stack-protector -fno-stack-clash-protection           ^
-    -fno-exceptions -fno-unwind-tables -fno-asynchronous-unwind-tables
+    -fno-exceptions
 ```
 ```
 
