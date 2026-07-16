@@ -148,7 +148,7 @@ gcc -o peldr.exe peldr.c                                                        
     -m64 -static                                                                ^
     -Wl,--sort-common,--nxcompat,--dynamicbase,--no-seh,-x                      ^
     -s -g0 -O3 -Wl,-O2                                                          ^
-    -fipa-pta -fno-strict-aliasing -fvisibility=hidden -fomit-frame-pointer     ^
+    -fipa-pta -fstrict-aliasing -fvisibility=hidden -fomit-frame-pointer        ^
     -fmerge-all-constants -ffunction-sections -fdata-sections -Wl,--gc-sections ^
     -Wl,--build-id=none -fno-ident -fno-builtin -fno-common                     ^
     -fno-stack-check -fno-stack-protector -fno-stack-clash-protection           ^
@@ -165,7 +165,7 @@ gcc -o loader.exe loader.c -e Main                                              
     -m64 -nostdlib -nostartfiles -ffreestanding                                 ^
     -Wl,--sort-common,--nxcompat,--dynamicbase,--no-seh,-x                      ^
     -s -g0 -O3 -Wl,-O2                                                          ^
-    -fipa-pta -fno-strict-aliasing -fvisibility=hidden -fomit-frame-pointer     ^
+    -fipa-pta -fstrict-aliasing -fvisibility=hidden -fomit-frame-pointer        ^
     -fmerge-all-constants -ffunction-sections -fdata-sections -Wl,--gc-sections ^
     -Wl,--build-id=none -fno-ident -fno-builtin -fno-common                     ^
     -fno-stack-check -fno-stack-protector -fno-stack-clash-protection           ^
