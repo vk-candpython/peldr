@@ -80,7 +80,7 @@ The loader never writes the original image to disk: it reads its own overlay, de
 
 | Feature | Description |
 |---------|-------------|
-| 🏗️ **Minimal Environment** | `-nostdlib -nostartfiles -ffreestanding` — no CRT |
+| 🏗️ **Minimal Environment** | `-nostdlib -ffreestanding` — no CRT |
 | 🧹 **Stripped Binary** | `--gc-sections`, no symbols, minimal footprint |
 | 📦 **Static PIE** | Position‑independent loader works from any base address |
 
@@ -148,6 +148,7 @@ gcc -o peldr.exe peldr.c                                                        
     -m64 -static                                                                ^
     -Wl,--sort-common,--nxcompat,--dynamicbase,--no-seh,-x                      ^
     -s -g0 -O3 -Wl,-O3                                                          ^
+    -fno-semantic-interposition                                                 ^
     -fipa-pta -fstrict-aliasing -fvisibility=hidden -fomit-frame-pointer        ^
     -fmerge-all-constants -ffunction-sections -fdata-sections -Wl,--gc-sections ^
     -Wl,--build-id=none -fno-ident -fno-common                                  ^
@@ -164,8 +165,8 @@ gcc -o peldr.exe peldr.c                                                        
 gcc -o loader.exe loader.c -e Main                                              ^
     -m64 -nostdlib -ffreestanding                                               ^
     -Wl,--sort-common,--nxcompat,--dynamicbase,--no-seh,-x                      ^
-    -s -g0 -O3 -Wl,-O2                                                          ^
-    -fno-semantic-interposition
+    -s -g0 -O3 -Wl,-O3                                                          ^
+    -fno-semantic-interposition                                                 ^
     -fipa-pta -fstrict-aliasing -fvisibility=hidden -fomit-frame-pointer        ^
     -fmerge-all-constants -ffunction-sections -fdata-sections -Wl,--gc-sections ^
     -Wl,--build-id=none -fno-ident -fno-common                                  ^
@@ -206,9 +207,9 @@ End of processing -> C:\Users\...\myapp.exe
 The loader (`loader.h`) exposes three compile‑time switches that control its behaviour:
 
 ```c
-#define  USING_ANTI_VM           FALSE
-#define  USING_ANTI_DEBUG        FALSE
-#define  USING_ERASE_PE_HEADERS  FALSE
+#define USING_ANTI_VM          FALSE
+#define USING_ANTI_DEBUG       FALSE
+#define USING_ERASE_PE_HEADERS FALSE
 ```
 
 | Flag | Default | Description |
@@ -304,9 +305,9 @@ peldr.exe myapp.exe
 ## ⚙️ Флаги конфигурации времени сборки
 
 ```c
-#define  USING_ANTI_VM           FALSE
-#define  USING_ANTI_DEBUG        FALSE
-#define  USING_ERASE_PE_HEADERS  FALSE
+#define USING_ANTI_VM          FALSE
+#define USING_ANTI_DEBUG       FALSE
+#define USING_ERASE_PE_HEADERS FALSE
 ```
 
 | Флаг | Описание |
