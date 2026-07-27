@@ -173,7 +173,6 @@ gcc -o loader.exe loader.c -e Main                                              
     -fno-stack-check -fno-stack-protector -fno-stack-clash-protection           ^
     -fno-exceptions
 ```
-```
 
 Convert `loader.exe` to a C array (e.g., using `xxd -i loader.exe > stub.h`) and update `STUB_EXE[]` in `peldr.c`. Then rebuild the builder.
 </details>
