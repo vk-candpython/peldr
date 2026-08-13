@@ -4,7 +4,7 @@
 <div align="center">
 
 [![Platform](https://img.shields.io/badge/platform-Windows-blue?logo=windows&logoColor=white)](https://www.microsoft.com/en-us/windows)
-[![Language](https://img.shields.io/badge/language-C%2FC%2B%2B-00599C?logo=c%2B%2B)](https://en.cppreference.com/)
+[![Language](https://img.shields.io/badge/language-C-00599C?logo=c)](https://en.cppreference.com/)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
 *Compress, Encrypt, Fileless Execute — One binary, zero traces.*
