@@ -9,6 +9,8 @@
 
 *Compress, Encrypt, Fileless Execute — One binary, zero traces.*
 
+### 📺 [Watch demo on YouTube](https://www.youtube.com/watch?v=lfQIbBdLlww&t=3s)
+
 </div>
 
 ---
