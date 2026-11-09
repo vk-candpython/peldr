@@ -27,12 +27,20 @@
  ************************************/
 
 
-#if !defined(__GNUC__) || defined(__clang__)
+#if !defined(__MINGW64__) || defined(__clang__)
     #error "peldr: GCC (MinGW-w64) compiler is required."
 #endif
 
-#if !defined(_WIN32)
-    #error "peldr: Windows OS is required."
+#if defined(__STRICT_ANSI__)
+    #error "peldr: GNU extensions required."
+#endif
+
+#if !defined(__STDC_VERSION__) || (__STDC_VERSION__ < 201112L)
+    #error "peldr: C11 standard or higher is required."
+#endif
+
+#if !defined(_WIN64)
+    #error "peldr: 64-bit Windows is required."
 #endif
 
 #if !defined(__x86_64__)
