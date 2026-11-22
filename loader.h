@@ -27,7 +27,7 @@
  ************************************/
 
 
-#if !defined(__MINGW64__) || defined(__clang__)
+#if !defined(__MINGW64__)
     #error "peldr: GCC (MinGW-w64) compiler is required."
 #endif
 
